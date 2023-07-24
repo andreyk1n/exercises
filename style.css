@@ -1,0 +1,960 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* burger menu */
+
+/* скрываем чекбокс */
+#menu__toggle {
+    opacity: 0;
+}
+
+/* стилизуем кнопку */
+.menu__btn {
+    display: flex;
+    /* используем flex для центрирования содержимого */
+    align-items: center;
+    /* центрируем содержимое кнопки */
+    position: fixed;
+    top: 10px;
+    left: 20px;
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+/* добавляем "гамбургер" */
+.menu__btn>span,
+.menu__btn>span::before,
+.menu__btn>span::after {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: white;
+
+}
+
+.menu__btn>span::before {
+    content: '';
+    top: -8px;
+}
+
+.menu__btn>span::after {
+    content: '';
+    top: 8px;
+}
+
+/* контейнер меню */
+.menu__box {
+    display: block;
+    position: fixed;
+    visibility: hidden;
+    top: 0;
+    left: -100%;
+    width: 300px;
+    height: 100%;
+    margin: 0;
+    padding: 80px 0;
+    list-style: none;
+    text-align: center;
+    background-color: black;
+    box-shadow: 1px 0px 6px rgba(0, 0, 0, .2);
+}
+
+/* элементы меню */
+.menu__item {
+    display: block;
+    padding: 12px 24px;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.menu__item:hover {
+    background-color: gray;
+}
+
+#menu__toggle:checked~.menu__btn>span {
+    transform: rotate(45deg);
+}
+
+#menu__toggle:checked~.menu__btn>span::before {
+    top: 0;
+    transform: rotate(0);
+}
+
+#menu__toggle:checked~.menu__btn>span::after {
+    top: 0;
+    transform: rotate(90deg);
+}
+
+#menu__toggle:checked~.menu__box {
+    visibility: visible;
+    left: 0;
+}
+
+.menu__btn>span,
+.menu__btn>span::before,
+.menu__btn>span::after {
+    transition-duration: .25s;
+}
+
+.menu__box {
+    transition-duration: .25s;
+}
+
+.menu__item {
+    transition-duration: .25s;
+}
+
+.hamburger-menu {
+    display: none;
+}
+
+html {
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --black: black;
+    --green: #25AB75;
+    --white: white;
+    --gray: #323131;
+    --mainTitle: 200px;
+    --subTitle: 120px;
+    --title: 50px;
+    --mediumText: 22px;
+    --smallText: 18px;
+    --miniTitle: 30px;
+}
+
+body {
+    background-color: var(--black);
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 4;
+    background-color: var(--black);
+}
+
+.logo {
+    font-size: var(--mediumText);
+    color: var(--white);
+    font-weight: 600;
+}
+
+.block-container {
+    width: 80%;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+
+nav ul li a {
+    color: var(--white);
+    font-size: var(--smallText);
+    text-decoration: none;
+    font-weight: 200;
+    transition-duration: .6s;
+}
+
+nav ul li a:hover {
+    color: var(--green);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 90px;
+    padding-bottom: 50px;
+}
+
+.new-banner {
+    width: 25%;
+    height: 36px;
+    border-radius: 200px;
+    background-color: var(--gray);
+    font-size: 12px;
+    color: var(--white);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.new-item {
+    padding-left: 5px;
+    padding-right: 5px;
+    background-color: var(--green);
+    height: 26px;
+    width: 46px;
+    border-radius: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--white);
+}
+
+.huge-title {
+    font-size: var(--mainTitle);
+    color: var(--white);
+}
+
+.subtext {
+    width: 600px;
+}
+
+.regular-text {
+    color: var(--gray);
+}
+
+.main-btn-container {
+    display: flex;
+    gap: 30px;
+}
+
+.main-btn-container input {
+    width: 200px;
+    height: 70px;
+    border-radius: 10px;
+    border: 0px;
+    outline: none;
+    font-size: var(--smallText);
+    color: var(--white);
+    transition-duration: .6s;
+}
+
+.main-btn-container input:hover {
+    filter: brightness(60%);
+    cursor: pointer;
+}
+
+.getStarted {
+    background-color: var(--green);
+}
+
+.preview {
+    background-color: var(--gray);
+}
+
+.text-btn-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding-left: 10px;
+}
+
+.main-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.side-block {
+    left: 50%;
+    position: absolute;
+    z-index: 2;
+}
+
+.popular-exercises {
+    padding-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popular-exercises-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.popular-exercises-title p {
+    font-size: var(--miniTitle);
+    color: var(--white);
+}
+
+.popular-exercises-title a {
+    text-decoration: none;
+    color: var(--gray);
+    transition-duration: .6s;
+    font-size: var(--smallText);
+    z-index: 6;
+}
+
+.popular-exercises-title a:hover {
+    color: var(--green);
+}
+
+.popular-exercises-img1 {
+    width: 370px;
+    height: 250px;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 80%, #000000 100%);
+    border-radius: 10px;
+    background: url(./images/exer1.png);
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.popular-exercises-img2 {
+    width: 370px;
+    height: 250px;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 80%, #000000 100%);
+    border-radius: 10px;
+    background: url(./images/exer2.png);
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.popular-exercises-img3 {
+    width: 370px;
+    height: 250px;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 80%, #000000 100%);
+    border-radius: 10px;
+    background: url(./images/exer3.png);
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.popular-exercises-img4 {
+    width: 370px;
+    height: 250px;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 80%, #000000 100%);
+    border-radius: 10px;
+    background: url(./images/exer4.png);
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.popular-exercises-img5 {
+    width: 370px;
+    height: 250px;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 80%, #000000 100%);
+    border-radius: 10px;
+    background: url(./images/exer5.png);
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.popular-exercises-img6 {
+    width: 370px;
+    height: 250px;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 80%, #000000 100%);
+    border-radius: 10px;
+    background: url(./images/exer6.png);
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.timer-count {
+    padding: 10px;
+    background-color: var(--black);
+    color: var(--white);
+    width: 40px;
+    border-top-left-radius: 15px;
+}
+
+.exercises-title {
+    position: relative;
+    font-size: var(--title);
+    color: var(--white);
+    top: -35px;
+    transition-duration: .6s;
+}
+
+.exercises-title:hover {
+    color: var(--green);
+    cursor: pointer;
+}
+
+.calories-counter {
+    position: relative;
+    top: -20px;
+    font-size: var(--smallText);
+    color: var(--gray);
+}
+
+.popular-exercises-item-container {
+    padding-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.workout-program {
+    padding-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.workout-program-title {
+    width: 40%;
+    color: var(--white);
+}
+
+.workout-program-title h2 {
+    font-size: var(--subTitle);
+    line-height: 120px;
+}
+
+.workout-program-title img {
+    position: relative;
+    top: -120px;
+    z-index: -1;
+}
+
+.workout-text-content input {
+    width: 200px;
+    height: 70px;
+    border-radius: 10px;
+    border: 0px;
+    outline: none;
+    font-size: var(--smallText);
+    color: var(--white);
+    transition-duration: .6s;
+}
+
+.workout-text-content {
+    padding-left: 100px;
+    /* padding-right: 100px; */
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.workout-text-content p {
+    font-size: var(--miniTitle);
+    color: var(--white);
+}
+
+.workout-text-container {
+    position: relative;
+    top: -60px;
+    left: -80px;
+    z-index: -2;
+    width: 80%;
+    height: 600px;
+    background-color: var(--gray);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.workout-text-content input:hover {
+    filter: brightness(60%);
+    cursor: pointer;
+}
+
+.workout-program-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.trainer-item p {
+    color: var(--white);
+    font-size: var(--smallText);
+}
+
+.trainer-item {
+    top: -250px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 12px;
+    transition-duration: .6s;
+}
+
+.trainer-item:hover {
+    cursor: pointer;
+    filter: blur(3px);
+}
+
+.trainer-item img {
+    border-radius: 30px;
+}
+
+.trainer-list {
+    padding-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.trainer-container {
+    width: 100%;
+    display: grid;
+    /* grid-template-areas: 
+    'item1  item2'
+    'item3 item3'; */
+    grid-template-columns: 1fr 1fr 1fr;
+    /* розміри стовпців */
+    grid-template-rows: auto auto;
+    /* розміри рядків */
+    gap: 10px;
+    /* проміжок між елементами */
+    align-items: end;
+}
+
+.item1 {
+    grid-row: 1;
+    grid-column: 1;
+}
+
+.item2 {
+    grid-row: 1;
+    grid-column: 3;
+}
+
+.item3 {
+    grid-row: 2;
+    grid-column: 2;
+}
+
+.type-workout {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.type-workout-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+}
+
+.type-workout-item {
+    width: 100%;
+    display: flex;
+    padding-top: 10px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--white);
+    justify-content: space-between;
+    align-items: center;
+    transition-duration: .6s;
+    color: var(--white);
+}
+
+.type-workout-item:hover {
+    border-bottom: 1px solid var(--green);
+    cursor: pointer;
+    color: var(--green);
+}
+
+.type-workout-item div h3 {
+    font-size: var(--title);
+    /* color: var(--white); */
+}
+
+.type-workout-item div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.num {
+    font-size: var(--miniTitle);
+    color: var(--white);
+}
+
+.type-workout-item div p {
+    font-size: var(--smallText);
+    /* color: var(--white); */
+}
+
+.arrow {
+    color: var(--white);
+    /* color: white; */
+    font-size: var(--miniTitle);
+    text-decoration: none;
+}
+
+@media (min-width: 1241px) {
+
+}
+
+@media (min-width: 769px) and (max-width:1240px) {
+    .new-banner {
+        width: 40%;
+        height: 36px;
+        border-radius: 200px;
+        background-color: var(--gray);
+        font-size: 12px;
+        color: var(--white);
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+
+    .huge-title {
+        width: 50%;
+        font-size: 140px;
+    }
+
+    .trainer-container {
+        padding-top: 70px;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .trainer-item {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .trainer-item img {
+        width: 450px;
+        height: 450px;
+    }
+
+    .side-block  {
+        display: none;
+    }
+
+    .popular-exercises-item-container {
+        padding-top: 50px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+        flex-wrap: wrap;
+    }
+
+    .workout-program-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 50px;
+        padding-bottom: 50px;
+    }
+
+    .workout-program-title h2 {
+        font-size: 80px;
+        line-height: 120px;
+    }
+
+    .workout-program-title {
+        width: 90%;
+        color: var(--white);
+    }
+
+    .workout-program-title img {
+        width: 80%;
+        color: var(--white);
+    }
+
+    .workout-text-container {
+        display: none;
+    }
+
+}
+
+@media (min-width: 569px) and (max-width: 768px) {
+
+    .subtext {
+        width: 60%;
+    }
+
+    .new-banner {
+        width: 60%;
+        height: 36px;
+        border-radius: 200px;
+        background-color: var(--gray);
+        font-size: 12px;
+        color: var(--white);
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .hamburger-menu {
+        display: block;
+    }
+
+    header {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 4;
+        background-color: var(--black);
+    }
+
+    nav {
+        display: none;
+    }
+
+    .side-block  {
+        display: none;
+    }
+
+    .huge-title {
+        width: 50%;
+        font-size: 80px;
+    }
+
+    .trainer-container {
+        padding-top: 70px;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .trainer-item {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .trainer-item img {
+        width: 450px;
+        height: 450px;
+    }
+
+    .popular-exercises-item-container {
+        padding-top: 50px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+        flex-wrap: wrap;
+    }
+
+    .workout-program-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 50px;
+        padding-bottom: 50px;
+    }
+
+    .workout-program-title h2 {
+        font-size: 80px;
+        line-height: 120px;
+    }
+
+    .workout-program-title {
+        width: 90%;
+        color: var(--white);
+    }
+
+    .workout-program-title img {
+        width: 80%;
+        color: var(--white);
+    }
+
+    .workout-text-container {
+        display: none;
+    }
+
+    .workout-text-content {
+        padding-left: 40px;
+        padding-right: 40px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+    }
+
+    .type-workout-item div h3 {
+        font-size: 30px;
+    }
+    .num {
+        font-size: 30px;
+        color: var(--white);
+    }
+    
+    .type-workout-item div p {
+        font-size: 14px;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 568px) {
+    .main-btn-container {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .subtext {
+        width: 100%;
+    }
+
+    .new-banner {
+        width: 80%;
+        height: 36px;
+        border-radius: 200px;
+        background-color: var(--gray);
+        font-size: 12px;
+        color: var(--white);
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .hamburger-menu {
+        display: block;
+    }
+
+    header {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 4;
+        background-color: var(--black);
+    }
+
+    nav {
+        display: none;
+    }
+
+    .side-block  {
+        display: none;
+    }
+
+    .huge-title {
+        width: 50%;
+        font-size: 80px;
+    }
+
+    .trainer-container {
+        padding-top: 70px;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .trainer-item {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .trainer-item img {
+        width: 300px;
+        height: 300px;
+    }
+
+    .popular-exercises-item-container {
+        padding-top: 50px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+        flex-wrap: wrap;
+    }
+
+    .workout-program-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 50px;
+        padding-bottom: 50px;
+    }
+
+    .workout-program-title h2 {
+        font-size: 80px;
+        line-height: 120px;
+    }
+
+    .workout-program-title {
+        width: 90%;
+        color: var(--white);
+    }
+
+    .workout-program-title img {
+        width: 80%;
+        color: var(--white);
+    }
+
+    .workout-text-container {
+        display: none;
+    }
+
+    .workout-text-content {
+        padding-left: 40px;
+        padding-right: 40px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+    }
+
+    .type-workout-item div h3 {
+        font-size: 30px;
+    }
+    .num {
+        font-size: 30px;
+        color: var(--white);
+    }
+    
+    .type-workout-item div p {
+        font-size: 14px;
+    }
+}
